@@ -1,0 +1,16 @@
+{
+  "name": "factory-bench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "verify": "tsc --noEmit && vitest run",
+    "verify:all": "pnpm verify"
+  },
+  "packageManager": "pnpm@12.16.1",
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
