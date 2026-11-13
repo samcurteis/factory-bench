@@ -1,0 +1,15 @@
+name: factory
+# Add the `factory` label to an issue: the factory implements it and opens a reviewed PR.
+# (`factory-local` does the same on the laptop poller instead.)
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  run:
+    # Only that label, and only when the repo owner adds it.
+    if: github.event.label.name == 'factory' && github.actor == github.repository_owner
+    uses: samcurteis/factory/.github/workflows/run.yml@main
+    with:
+      issue: ${{ github.event.issue.number }}
+    secrets: inherit
