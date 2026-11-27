@@ -12,6 +12,8 @@ describe("parseDuration", () => {
     ["1h 30m", 5400],
     ["1h  30m  15s", 5415],
     ["  2h  ", 7200],
+    ["1d", 86400],
+    ["1d12h30m", 131400],
   ])("parses %j as %i seconds", (input, seconds) => {
     expect(parseDuration(input)).toBe(seconds);
   });
@@ -27,6 +29,7 @@ describe("parseDuration", () => {
     ["1h1h", "repeated"],
     ["1 h", "unexpected"],
     ["1H", "unexpected"],
+    ["12h1d", "out of order"],
   ])("rejects %j (%s)", (input, reason) => {
     expect(() => parseDuration(input)).toThrow(DurationError);
     expect(() => parseDuration(input)).toThrow(reason);

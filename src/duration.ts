@@ -1,5 +1,6 @@
 /** Seconds in each unit, largest first. Parts must appear in this order, each at most once. */
 const UNITS = [
+  ["d", 86400],
   ["h", 3600],
   ["m", 60],
   ["s", 1],
@@ -13,8 +14,8 @@ export class DurationError extends Error {
 }
 
 /**
- * Parse a duration like "1h30m", "90m" or "1h 30m" into whole seconds.
- * Each part is a whole number followed by a unit (h, m, s). Spaces between parts are allowed.
+ * Parse a duration like "1d12h", "1h30m", "90m" or "1h 30m" into whole seconds.
+ * Each part is a whole number followed by a unit (d, h, m, s). Spaces between parts are allowed.
  * Throws DurationError on anything else.
  */
 export function parseDuration(input: string): number {
